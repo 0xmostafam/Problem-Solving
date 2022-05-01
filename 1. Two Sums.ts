@@ -6,9 +6,9 @@ You may assume that each input would have exactly one solution, and you may not 
 You can return the answer in any order.
 */
 
-const twoSum = function(nums, target) {
+const twoSum = (nums: number[], target: number) => {
     const map = new Map();
-    let answer = []
+    let answer = [];
     nums.every((element,index) => {
         if (!map.has(target - element)) {
             map.set(element,index);
