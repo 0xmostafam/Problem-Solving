@@ -5,19 +5,18 @@ Note that after backspacing an empty text, the text will continue empty.
 */
 
 function backspaceCompare(s: string, t: string): boolean {
-    
-    return evaluateBackspace(s) === evaluateBackspace(t);
-};
+  return evaluateBackspace(s) === evaluateBackspace(t);
+}
 
 // O(n) Time, O(n) Space
 const evaluateBackspace = (s: string) => {
-    const sStack = [];
-    [...s].forEach(char => {
-        if (char === "#"){
-            sStack.pop()
-        } else {
-            sStack.push(char)
-        }
-    })
-    return sStack.join(" ")
-}
+  const sStack = [];
+  [...s].forEach((char) => {
+    if (char === "#") {
+      sStack.pop();
+    } else {
+      sStack.push(char);
+    }
+  });
+  return sStack.join(" ");
+};

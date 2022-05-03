@@ -6,17 +6,13 @@
 
 // Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
 
-// For some reason leetcode doesn't accept this as a valid answer but i tested it according to there test cases and it works well
-
 const removeDuplicates = (nums: number[]): number => {
-    let count = 0;
-    for(let i = 0; i < nums.length; i++){
-        if (nums[count] !== nums[i])
-            count++;
-            nums[count] = nums[i];
-    }
-    console.log(nums)
-    return count;
+  let count = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[count] !== nums[i]) count++;
+    nums[count] = nums[i];
+  }
+  return count + 1;
 };
 
-removeDuplicates([1,1,2])
+removeDuplicates([1, 1, 2]);

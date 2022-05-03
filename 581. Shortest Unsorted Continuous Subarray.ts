@@ -3,48 +3,48 @@
 // Return the shortest such subarray and output its length.
 
 const findUnsortedSubarray = (nums: number[]): number => {
-    if(nums === null) return 0;
-    
-    let length = nums.length;
-    let stack : number[] = [];
-    let lastElement = Number.MIN_SAFE_INTEGER;
-    let total = 0;
+  if (nums === null) return 0;
 
-    const sorted = nums.every((element,index) => {
-        if(element >= lastElement){
-            stack.push(element);
-            lastElement = element;
-            return true;
-        } else {
-            lastElement = Math.min(...nums.slice(index));
-            return false;
-        }
-    });
+  let length = nums.length;
+  let stack: number[] = [];
+  let lastElement = Number.MIN_SAFE_INTEGER;
+  let total = 0;
 
-    if (sorted) {
-        return 0;
+  const sorted = nums.every((element, index) => {
+    if (element >= lastElement) {
+      stack.push(element);
+      lastElement = element;
+      return true;
     } else {
-        while (stack.length !== 0 && stack[ stack.length - 1 ] > lastElement)
-            stack.pop()
-        total += stack.length;
-        stack.length = 0;
-        lastElement = Number.MAX_SAFE_INTEGER;
+      lastElement = Math.min(...nums.slice(index));
+      return false;
     }
+  });
 
-    const reversedNum = nums.reverse();
-    reversedNum.every((element,index) => {
-        if(element <= lastElement){
-            stack.push(element);
-            lastElement = element;
-            return true;
-        } else {
-            lastElement = Math.max(...reversedNum.slice(index));;
-            return false;
-        }
-    });
+  if (sorted) {
+    return 0;
+  } else {
+    while (stack.length !== 0 && stack[stack.length - 1] > lastElement)
+      stack.pop();
+    total += stack.length;
+    stack.length = 0;
+    lastElement = Number.MAX_SAFE_INTEGER;
+  }
 
-    while (stack.length !== 0 && stack[ stack.length - 1 ] < lastElement)
-        stack.pop()
-    total += stack.length
-    return length - total;
+  const reversedNum = nums.reverse();
+  reversedNum.every((element, index) => {
+    if (element <= lastElement) {
+      stack.push(element);
+      lastElement = element;
+      return true;
+    } else {
+      lastElement = Math.max(...reversedNum.slice(index));
+      return false;
+    }
+  });
+
+  while (stack.length !== 0 && stack[stack.length - 1] < lastElement)
+    stack.pop();
+  total += stack.length;
+  return length - total;
 };

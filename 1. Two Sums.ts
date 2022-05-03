@@ -7,18 +7,18 @@ You can return the answer in any order.
 */
 
 const twoSum = (nums: number[], target: number) => {
-    const map = new Map();
-    let answer = [];
-    nums.every((element,index) => {
-        if (!map.has(target - element)) {
-            map.set(element,index);
-            return true;
-        } else {
-            answer = [map.get(target - element), index];
-            return false;
-        }
-    });
-    return answer;
+  const map = new Map();
+  let answer = [];
+  nums.every((element, index) => {
+    if (!map.has(target - element)) {
+      map.set(element, index);
+      return true;
+    } else {
+      answer = [map.get(target - element), index];
+      return false;
+    }
+  });
+  return answer;
 };
 
-console.log(twoSum([2,7,11,15],9));
+console.log(twoSum([2, 7, 11, 15], 9));

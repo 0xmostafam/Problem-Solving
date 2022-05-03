@@ -30,17 +30,16 @@ const romanToInt = (s: string): number => {
     M: 1000,
   };
 
-  let previousValue = Number.MAX_SAFE_INTEGER ;
+  let previousValue = Number.MAX_SAFE_INTEGER;
   let total = 0;
-  [...s].forEach(char => {
-    if (numeralsMap[char] > previousValue){
-        total += numeralsMap[char] - ( previousValue * 2 )
+  [...s].forEach((char) => {
+    if (numeralsMap[char] > previousValue) {
+      total += numeralsMap[char] - previousValue * 2;
     } else {
-        total += numeralsMap[char]
+      total += numeralsMap[char];
     }
-    previousValue = numeralsMap[char]
-  })
+    previousValue = numeralsMap[char];
+  });
 
   return total;
 };
-
