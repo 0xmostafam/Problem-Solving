@@ -1,0 +1,12 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        string_map1 = {}
+        string_map2 = {}
+        for i in range(len(s)):
+            if s[i] in string_map1 and string_map1[s[i]] != t[i]:
+                return False
+            if t[i] in string_map2 and string_map2[t[i]] != s[i]:
+                return False
+            string_map1[s[i]] = t[i]
+            string_map2[t[i]] = s[i]
+        return True

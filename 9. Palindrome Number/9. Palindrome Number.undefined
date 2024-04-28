@@ -1,0 +1,17 @@
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+const isPalindrome = function(x) {
+    if (x < 0)
+        return false;
+    
+    number = x;
+    reverse = 0;
+    while(number >= 1){
+        reverse *= 10;
+        reverse += number % 10;
+        number = Math.floor(number / 10);
+    }
+    return reverse === x;
+}
